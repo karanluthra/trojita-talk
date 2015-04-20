@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Why, what and how to contribute to Trojita</title>
+
+		<meta name="description" content="Talk on Trojita based on reveal.js, a framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Slides: Karan Luthra, framework by Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+
+		<link rel="stylesheet" href="css/theme/final.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="theme-font-opensans theme-color-sky-blue" style="width: 100%; height: 100%;">
+		    <div class="reveal">
+		        <div class="slides">
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 301px; height: auto;">
+		                    <div style="z-index: 11;" class="sl-block-content">
+		                        <h1>Trojitá*, a fast Qt IMAP Client</h1>
+		                    </div>
+		                </div>
+		                <div style="min-width: 30px; min-height: 30px; width: 360px; height: 261.422px; left: 300px; top: 70px;" data-block-type="image" class="sl-block">
+		                    <div style="z-index: 12;" class="sl-block-content">
+		                        <img data-src="img/trojita.png" data-natural-height="480" data-natural-width="661" style=""/>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 551px;" data-block-type="text" class="sl-block">
+		                    <div style="z-index: 13;" class="sl-block-content">
+		                        <p>* pronounced as 
+		                            <em>Tro-yee-tah</em>
+		                        </p>
+		                    </div>
+		                </div>
+		            </section>
+		            <section class="stack">
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 715px; left: 100px; top: 101px; height: auto;">
+		                        <div class="sl-block-content" style="font-size: 200%; text-align: left; z-index: 11;">
+		                            <p>
+		                                <strong>Karan Luthra</strong>
+		                            </p>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 620px; left: 80px; top: 256px;" data-block-type="text" class="sl-block">
+		                        <div style="z-index: 12;" class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment" style="text-align:left">Google Summer of Code KDE 2015</li>
+		                                <li data-fragment-index="1" class="fragment">Mentored by lead developer</li>
+		                                <li data-fragment-index="2" class="fragment" style="text-align:left">Recent graduate</li>
+		                                <li data-fragment-index="3" class="fragment" style="text-align:left">Recent geek</li>
+		                                <li data-fragment-index="4" class="fragment" style="text-align:left">C/C++</li>
+		                                <li data-fragment-index="5" class="fragment">~1000 LoC merged</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 100px; top: 179px;" data-block-type="text" class="sl-block">
+		                        <div style="z-index: 13;" class="sl-block-content">
+		                            <p style="text-align:left">
+		                                <span style="color:#696969">IRC: luthrak</span>
+		                            </p>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 91px; height: auto;">
+		                        <div style="z-index: 10;" class="sl-block-content">
+		                            <h1>Objective</h1>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 222px;" data-block-type="text" class="sl-block">
+		                        <div style="z-index: 12;" class="sl-block-content">
+		                            <p>Interested people should be able to</p>
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment">understand EMail jargon</li>
+		                                <li data-fragment-index="1" class="fragment">read through bugs list</li>
+		                                <li data-fragment-index="2" class="fragment">know where to look in code</li>
+		                                <li data-fragment-index="3" class="fragment">know where to ask for help</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		            </section>
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 15px; height: auto;">
+		                    <div style="z-index: 11;" class="sl-block-content">
+		                        <h1>Electronic Mail</h1>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 70px; height: 68px; left: 80px; top: 154px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="0" style="z-index: 12;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-happy" class="sl-block-content fragment">
+		                        <svg viewBox="0 0 32 32" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM16 18.711c3.623 0 7.070-0.963 10-2.654-0.455 5.576-4.785 9.942-10 9.942-5.215 0-9.544-4.371-10-9.947 2.93 1.691 6.377 2.658 10 2.658zM8 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3zM20 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 82px; height: 71px; left: 800px; top: 153px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="2" style="z-index: 13;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-happy" class="sl-block-content fragment">
+		                        <svg viewBox="0 0 32 32" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM16 18.711c3.623 0 7.070-0.963 10-2.654-0.455 5.576-4.785 9.942-10 9.942-5.215 0-9.544-4.371-10-9.947 2.93 1.691 6.377 2.658 10 2.658zM8 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3zM20 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 127px; left: 160px; top: 183px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="1" style="z-index: 14;" class="sl-block-content fragment">
+		                        <p>Amrutha</p>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 135px; left: 654px; top: 183px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="3" style="z-index: 15;" class="sl-block-content fragment">
+		                        <p>Sreedevi</p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 80px; height: 41px; left: 75px; top: 251px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="5" style="z-index: 16;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-mail" class="sl-block-content fragment">
+		                        <svg viewBox="0 4 32 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M15.996 15.457l16.004-7.539v-3.918h-32v3.906zM16.004 19.879l-16.004-7.559v15.68h32v-15.656z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 121px; left: 160px; top: 251px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="6" style="z-index: 17;" class="sl-block-content fragment">
+		                        <p>Trojitá</p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 300px; height: 300px; left: 330px; top: 330px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="4" style="z-index: 10; opacity: 0.14;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-globe" class="sl-block-content fragment">
+		                        <svg viewBox="0 2 30 30" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M15 2c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM23.487 22c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM6.513 12c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM21.439 12c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM16 10v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM10.351 7.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM14 12v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM2.997 22c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM8.021 18h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM14 24v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM19.649 26.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM16 22v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM23.98 16c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM25.958 10h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM5.808 7.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM4.042 24h2.997c0.583 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM24.192 26.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 244px; height: 155px; left: 52px; top: 446px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="10" style="z-index: 18; opacity: 0.17;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-cloud" class="sl-block-content fragment">
+		                        <svg viewBox="0 6 32 20" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M24 10c-0.379 0-0.738 0.061-1.102 0.111-1.394-2.465-3.972-4.111-6.898-4.111-2.988 0-5.566 1.666-6.941 4.1-0.352-0.047-0.704-0.1-1.059-0.1-4.41 0-8 3.588-8 8 0 4.414 3.59 8 8 8h16c4.41 0 8-3.586 8-8 0-4.412-3.59-8-8-8zM24 22h-16c-2.207 0-4-1.797-4-4 0-2.193 1.941-3.885 4.004-3.945 0.008 0.943 0.172 1.869 0.5 2.744l3.746-1.402c-0.168-0.444-0.25-0.915-0.25-1.397 0-2.205 1.793-4 4-4 1.293 0 2.465 0.641 3.199 1.639-1.929 1.461-3.199 3.756-3.199 6.361h4c0-2.205 1.793-4 4-4s4 1.795 4 4c0 2.203-1.793 4-4 4z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 248px; left: 50px; top: 521px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="11" style="z-index: 19;" class="sl-block-content fragment">
+		                        <p>
+		                            <span style="font-size:24px">
+		                                <strong>smtp.amritafoss.in</strong>
+		                            </span>
+		                        </p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 91.5px; height: 81px; left: 674px; top: 531px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="14" style="z-index: 20; opacity: 0.16;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-cloud" class="sl-block-content fragment">
+		                        <svg viewBox="0 6 32 20" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M24 10c-0.379 0-0.738 0.061-1.102 0.111-1.394-2.465-3.972-4.111-6.898-4.111-2.988 0-5.566 1.666-6.941 4.1-0.352-0.047-0.704-0.1-1.059-0.1-4.41 0-8 3.588-8 8 0 4.414 3.59 8 8 8h16c4.41 0 8-3.586 8-8 0-4.412-3.59-8-8-8zM24 22h-16c-2.207 0-4-1.797-4-4 0-2.193 1.941-3.885 4.004-3.945 0.008 0.943 0.172 1.869 0.5 2.744l3.746-1.402c-0.168-0.444-0.25-0.915-0.25-1.397 0-2.205 1.793-4 4-4 1.293 0 2.465 0.641 3.199 1.639-1.929 1.461-3.199 3.756-3.199 6.361h4c0-2.205 1.793-4 4-4s4 1.795 4 4c0 2.203-1.793 4-4 4z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 93px; left: 673px; top: 556px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="15" style="z-index: 21;" class="sl-block-content fragment">
+		                        <p>
+		                            <strong>MX</strong>
+		                        </p>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 137px; left: 150px; top: 313px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="8" style="z-index: 22;" class="sl-block-content fragment">
+		                        <p>
+		                            <span style="font-size:16px">To: Sreedevi @amritafoss.in</span>
+		                        </p>
+		                        <p>
+		                            <span style="font-size:16px">Dear Sreedevi, ..</span>
+		                        </p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 125px; height: 181.5px; left: 155px; top: 283px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="7" href="" style="z-index: 0; opacity: 0.16;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="rect" class="sl-block-content fragment">
+		                        <svg viewBox="0 0 125 125" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <rect fill="#000000" class="shape-element" height="125" width="125"></rect>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 43px; height: 78px; left: 94px; top: 342px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="9" style="z-index: 23;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-down" class="sl-block-content fragment">
+		                        <svg viewBox="4 2 24 28" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 300px; height: 43.5px; left: 340px; top: 499px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="16" style="z-index: 24;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-right" class="sl-block-content fragment">
+		                        <svg viewBox="2 4 28 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 110px; height: 46px; left: 432px; top: 537px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="19" style="z-index: 25;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-left" class="sl-block-content fragment">
+		                        <svg viewBox="2 4 28 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M12.586 4.586l-10 10c-0.781 0.781-0.781 2.047 0 2.828l10 10c0.781 0.781 2.047 0.781 2.828 0s0.781-2.047 0-2.828l-6.586-6.586h19.172c1.105 0 2-0.895 2-2s-0.895-2-2-2h-19.172l6.586-6.586c0.39-0.391 0.586-0.902 0.586-1.414s-0.195-1.024-0.586-1.414c-0.781-0.781-2.047-0.781-2.828 0z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 35px; height: 43px; left: 644px; top: 510px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="17" style="z-index: 26;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-down-right" class="sl-block-content fragment">
+		                        <svg viewBox="4 4 24 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M28 14c0-1.105-0.895-2-2-2s-2 0.895-2 2v7.172l-16.586-16.586c-0.781-0.781-2.047-0.781-2.828 0-0.391 0.391-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414l16.586 16.586h-7.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h14v-14z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 38.5px; height: 47px; left: 630px; top: 548px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="18" style="z-index: 27;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-left" class="sl-block-content fragment">
+		                        <svg viewBox="2 4 28 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M12.586 4.586l-10 10c-0.781 0.781-0.781 2.047 0 2.828l10 10c0.781 0.781 2.047 0.781 2.828 0s0.781-2.047 0-2.828l-6.586-6.586h19.172c1.105 0 2-0.895 2-2s-0.895-2-2-2h-19.172l6.586-6.586c0.39-0.391 0.586-0.902 0.586-1.414s-0.195-1.024-0.586-1.414c-0.781-0.781-2.047-0.781-2.828 0z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 58px; height: 53px; left: 311px; top: 446px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="20" style="z-index: 28;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-up-right" class="sl-block-content fragment">
+		                        <svg viewBox="4 4 24 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M26.001 4c-0 0-0.001 0-0.001 0h-11.999c-1.105 0-2 0.895-2 2s0.895 2 2 2h7.172l-16.586 16.586c-0.781 0.781-0.781 2.047 0 2.828 0.391 0.391 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586l16.586-16.586v7.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-14h-1.999z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 69px; height: 70px; left: 453px; top: 384px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="21" style="z-index: 29;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-right" class="sl-block-content fragment">
+		                        <svg viewBox="2 4 28 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 226px; height: 210px; left: 720px; top: 333px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="12" style="z-index: 30; opacity: 0.19;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-cloud" class="sl-block-content fragment">
+		                        <svg viewBox="0 6 32 20" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M24 10c-0.379 0-0.738 0.061-1.102 0.111-1.394-2.465-3.972-4.111-6.898-4.111-2.988 0-5.566 1.666-6.941 4.1-0.352-0.047-0.704-0.1-1.059-0.1-4.41 0-8 3.588-8 8 0 4.414 3.59 8 8 8h16c4.41 0 8-3.586 8-8 0-4.412-3.59-8-8-8zM24 22h-16c-2.207 0-4-1.797-4-4 0-2.193 1.941-3.885 4.004-3.945 0.008 0.943 0.172 1.869 0.5 2.744l3.746-1.402c-0.168-0.444-0.25-0.915-0.25-1.397 0-2.205 1.793-4 4-4 1.293 0 2.465 0.641 3.199 1.639-1.929 1.461-3.199 3.756-3.199 6.361h4c0-2.205 1.793-4 4-4s4 1.795 4 4c0 2.203-1.793 4-4 4z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 252px; left: 708px; top: 427px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="13" style="z-index: 31;" class="sl-block-content fragment">
+		                        <p>
+		                            <span style="font-size:24px">
+		                                <strong>imap.amritafoss.in</strong>
+		                            </span>
+		                        </p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 70px; height: 86px; left: 638px; top: 413px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="22" style="z-index: 32;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-right" class="sl-block-content fragment">
+		                        <svg viewBox="2 4 28 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 56px; height: 59px; left: 813px; top: 241px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="23" style="z-index: 33;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-mail" class="sl-block-content fragment">
+		                        <svg viewBox="0 4 32 24" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M15.996 15.457l16.004-7.539v-3.918h-32v3.906zM16.004 19.879l-16.004-7.559v15.68h32v-15.656z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		                <div style="height: auto; min-width: 30px; min-height: 30px; width: 121px; left: 674px; top: 251px;" data-block-type="text" class="sl-block">
+		                    <div data-fragment-index="24" style="z-index: 34;" class="sl-block-content fragment">
+		                        <p>Trojitá</p>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 46px; height: 80px; left: 823px; top: 311px;" data-block-type="shape" class="sl-block">
+		                    <div data-fragment-index="25" style="z-index: 35;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-thin-arrow-up" class="sl-block-content fragment">
+		                        <svg viewBox="4 2 24 28" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		            </section>
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;">
+		                    <div class="sl-block-content">
+		                        <h2>
+		                            <span style="font-size:64px">Why Trojitá?</span>
+		                        </h2>
+		                    </div>
+		                </div>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;">
+		                    <div class="sl-block-content">
+		                        <ul>
+		                            <li data-fragment-index="0" class="fragment">Efficient workflow for Devs on Desktops</li>
+		                            <li data-fragment-index="1" class="fragment">Very fast at fetching mail from IMAP mailboxes</li>
+		                            <li data-fragment-index="2" class="fragment">Low resource mode for costly, slow networks</li>
+		                            <li data-fragment-index="3" class="fragment">Built to be used on Mobile Phones
+			
+		                                <ul>
+		                                    <li>easily portable to mobile UIs</li>
+		                                    <li>Ubuntu Dekko</li>
+		                                </ul>
+		                            </li>
+		                            <li data-fragment-index="4" class="fragment">Upcoming support for Secure Messaging</li>
+		                            <li data-fragment-index="5" class="fragment">Use with your own/org's IMAP server</li>
+		                        </ul>
+		                    </div>
+		                </div>
+		            </section>
+		            <section class="stack">
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h1>
+		                                <span style="font-size:96px">What is Trojitá?</span>
+		                            </h1>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 383px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>a fast, Qt IMAP Client</h2>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 165px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Fast</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li>HackerNews commenter
+			
+		                                    <ul>
+		                                        <li>~15 Gb of email on IMAP server</li>
+		                                        <li>"blazing fast"</li>
+		                                    </ul>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 80px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Qt</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment">Cross Platform
+			
+		                                    <ul>
+		                                        <li>Tried on Windows, Linux, Nokia Harmattan</li>
+		                                    </ul>
+		                                </li>
+		                                <li data-fragment-index="1" class="fragment">Great library support for further feature extension</li>
+		                                <li data-fragment-index="2" class="fragment">Runs with Qt5 as well</li>
+		                                <li data-fragment-index="3" class="fragment">Extensible UI using QML</li>
+		                                <li data-fragment-index="4" class="fragment">KDE project, but no dependecies on KDE Libraries</li>
+		                                <li data-fragment-index="5" class="fragment">Lightweight
+			
+		                                    <ul>
+		                                        <li>Arch Linux: 5.6 Mb</li>
+		                                        <li>Windows: 4.4 Mb + libraries</li>
+		                                    </ul>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 53px; height: auto;">
+		                        <div style="z-index: 10;" class="sl-block-content">
+		                            <h2>IMAP</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 151px; height: auto;">
+		                        <div style="z-index: 11;" class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment">Internet Message Access Protocol
+			
+		                                    <ul>
+		                                        <li>Succeeded POP</li>
+		                                    </ul>
+		                                </li>
+		                                <li data-fragment-index="1" class="fragment">Multiple Clients connected simultaneously</li>
+		                                <li data-fragment-index="2" class="fragment">Server Side Searches</li>
+		                                <li data-fragment-index="3" class="fragment">Downloads MIME parts</li>
+		                                <li data-fragment-index="5" class="fragment">more..</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 668px; left: 52px; top: 578px;" data-block-type="text" class="sl-block">
+		                        <div data-fragment-index="4" style="z-index: 12;" class="sl-block-content fragment">
+		                            <p style="text-align: left;">
+		                                <span style="font-size:20px">MIME: Multi-Purpose Internet Mail Extensions</span>
+		                            </p>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 443px;" data-block-type="text" class="sl-block">
+		                        <div data-fragment-index="6" style="z-index: 14;" class="sl-block-content fragment">
+		                            <p>
+		                                <strong>
+		                                    <em>Trojitá is very compliant with the IMAP Spec. It in fact was built by the author during his BSc and MSc Thesis work around IMAP extensions</em>
+		                                </strong>
+		                            </p>
+		                        </div>
+		                    </div>
+		                </section>
+		            </section>
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 586px; left: 23px; top: 23px; height: auto;">
+		                    <div class="sl-block-content" style="text-align: left;">
+		                        <h2>
+		                            <span style="font-size:64px">Architecture</span>
+		                        </h2>
+		                    </div>
+		                </div>
+		                <div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 145px; height: auto;">
+		                    <div class="sl-block-content" style="z-index: 13; text-align: left;">
+		                        <ul>
+		                            <li data-fragment-index="1" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Model-View arch</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="2" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Qt framework (C++)</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="3" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Very modular, layered architecture with clear interfaces</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="4" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Pluggable GUI layers (QtGUI, QML)</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="5" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Lazy, on-demand loading</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="6" class="fragment" style="color:#000000">
+		                                <p>
+		                                    <span style="color:#000000">Streams layer multiple interfaces</span>
+		                                </p>
+		                            </li>
+		                            <li data-fragment-index="7" class="fragment" style="color:#000000">
+		                                <span style="color:#000000">Unit-test suite</span>
+		                            </li>
+		                        </ul>
+		                    </div>
+		                </div>
+		                <div class="sl-block" data-block-type="image" style="width: 512.94px; height: 454px; left: 434px; top: 155px;">
+		                    <div data-fragment-index="0" class="sl-block-content fragment">
+		                        <img data-src="img/trojita-arch.png" data-natural-height="570" data-natural-width="644" style=""/>
+		                    </div>
+		                </div>
+		            </section>
+		            <section class="stack">
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Contributing to Trojitá</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 288px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment">My two-line patch</li>
+		                                <li data-fragment-index="1" class="fragment">Areas that need feature development</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 97px; height: auto;">
+		                        <div style="z-index: 10;" class="sl-block-content">
+		                            <h1>A Two Line Patch</h1>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;">
+		                        <div style="z-index: 11;" class="sl-block-content">
+		                            <h2>
+		                                <span style="font-size:32px">BUG: Message editor should prompt to save on ANY change, not only body</span>
+		                            </h2>
+		                        </div>
+		                    </div>
+		                    <div style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 360px;" data-block-type="text" class="sl-block">
+		                        <div dir="ui" style="z-index: 13;" class="sl-block-content">
+		                            <blockquote>
+		                                <p>
+		                                    <em>
+		                                        <span style="font-size:16px;">I just spent several minutes individually pasting about 30 e-mail addresses into a message, which I intended to save as a draft for later reuse. Because I made several changes (adding several To fields and editing the subject line), I expected that clicking Cancel would ask if I wanted to save the draft.
+		                                            <br/>
+		                                        </span>
+		                                    </em>
+		                                </p>
+		                                <p>
+		                                    <em>
+		                                        <span style="font-size:16px;">Instead, Trojita sees the empty message body, assumes there is nothing to save, and then throws away the last few minutes of my work.</span>
+		                                    </em>
+		                                    <br/>
+		                                </p>
+		                            </blockquote>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 12px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>The Fix</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="image" style="width: 949.375px; height: 490px; left: 6px; top: 96px;">
+		                        <div class="sl-block-content">
+		                            <img data-src="img/draft-patch.png" data-natural-height="640" data-natural-width="1240" style=""/>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 27px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Areas needing contribution</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment" style="color:#000000">
+		                                    <p>
+		                                        <span style="color:#000000">Multi-account support</span>
+		                                    </p>
+		                                </li>
+		                                <li data-fragment-index="1" class="fragment" style="color:#000000">
+		                                    <p>
+		                                        <span style="color:#000000">Ports to touch UIs and mobile devices</span>
+		                                    </p>
+		                                </li>
+		                                <li data-fragment-index="2" class="fragment" style="color:#000000">
+		                                    <p>
+		                                        <span style="color:#000000">Done/WIP:</span>
+		                                    </p>
+		                                    <ul>
+		                                        <li style="color:#000000">
+		                                            <p>
+		                                                <span style="color:#000000">Ubuntu’s Dekko</span>
+		                                            </p>
+		                                        </li>
+		                                        <li style="color:#000000">
+		                                            <p>
+		                                                <span style="color:#000000">
+		                                                    <span style="color:#000000">Nokia’s Harmattan</span>
+		                                                </span>
+		                                            </p>
+		                                        </li>
+		                                    </ul>
+		                                </li>
+		                                <li data-fragment-index="3" class="fragment" style="color:#000000">
+		                                    <p style="color:#000000;">Potential</p>
+		                                    <ul>
+		                                        <li style="color:#000000">
+		                                            <p>
+		                                                <span style="color:#000000">BB10 -- GSoC 2015</span>
+		                                            </p>
+		                                        </li>
+		                                        <li style="color:#000000">
+		                                            <p>
+		                                                <span style="color:#000000">Android?</span>
+		                                            </p>
+		                                        </li>
+		                                    </ul>
+		                                </li>
+		                                <li data-fragment-index="4" class="fragment" style="color:#000000">
+		                                    <p>
+		                                        <span style="color:#000000">GUI improvements for better UX</span>
+		                                    </p>
+		                                </li>
+		                                <li data-fragment-index="5" class="fragment" style="color:#000000">
+		                                    <p>
+		                                        <span style="color:#000000">Signed and Encrypted messaging -- PGP</span>
+		                                    </p>
+		                                </li>
+		                                <li data-fragment-index="6" class="fragment" style="color:#000000">
+		                                    <span style="color:#000000">SMTP replacement</span>
+		                                </li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h1>Something for everyone!</h1>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Workflow</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 172px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li data-fragment-index="0" class="fragment">Cloning from Git</li>
+		                                <li data-fragment-index="1" class="fragment">Building the application</li>
+		                                <li data-fragment-index="2" class="fragment">Select BUG</li>
+		                                <li data-fragment-index="3" class="fragment">Ask help, read docs</li>
+		                                <li data-fragment-index="4" class="fragment">Make changes to code</li>
+		                                <li data-fragment-index="5" class="fragment">Build and test</li>
+		                                <li data-fragment-index="6" class="fragment">Push to Code Review (Gerrit)</li>
+		                                <li data-fragment-index="7" class="fragment">Get acceptance</li>
+		                                <li data-fragment-index="8" class="fragment">Continuous Integration (Seatbelts in place)</li>
+		                                <li data-fragment-index="9" class="fragment">Become Immortal!</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 18px; height: auto;">
+		                        <div style="z-index: 10;" class="sl-block-content">
+		                            <h2>Get Credit :)</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="image" style="width: 960px; height: 539.736px; left: 0px; top: 102.264px;">
+		                        <div style="z-index: 11;" class="sl-block-content">
+		                            <img data-src="img/firstpatchtrojita.png" data-natural-height="768" data-natural-width="1366" style=""/>
+		                        </div>
+		                    </div>
+		                </section>
+		            </section>
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;">
+		                    <div class="sl-block-content">
+		                        <h2>Community over Code :)</h2>
+		                    </div>
+		                </div>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 199px; height: auto;">
+		                    <div class="sl-block-content">
+		                        <ul>
+		                            <li data-fragment-index="0" class="fragment">Mentoring at the IRC Channel</li>
+		                            <li data-fragment-index="1" class="fragment">First Patch
+			
+		                                <ul>
+		                                    <li>10 revisions</li>
+		                                </ul>
+		                            </li>
+		                            <li data-fragment-index="2" class="fragment">Opening up perception
+			
+		                                <ul>
+		                                    <li>International Users to your code</li>
+		                                    <li>Multiple Languages</li>
+		                                </ul>
+		                            </li>
+		                            <li data-fragment-index="3" class="fragment">Patience with new contributors</li>
+		                            <li data-fragment-index="4" class="fragment">Time and effort</li>
+		                        </ul>
+		                    </div>
+		                </div>
+		            </section>
+		            <section class="stack">
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Questions?</h2>
+		                        </div>
+		                    </div>
+		                </section>
+		                <section>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 71px; top: 13px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <h2>Objective</h2>
+		                        </div>
+		                    </div>
+		                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto;">
+		                        <div class="sl-block-content">
+		                            <ul>
+		                                <li>Make people comfortable with Trojitá
+			
+		                                    <ul>
+		                                        <li>Use it</li>
+		                                        <li>Read the Thesis (link at trojita.flaska.net)</li>
+		                                        <li>Check out the bug list at bugs.kde.org</li>
+		                                    </ul>
+		                                </li>
+		                                <li>Let people know where to ask for help
+			
+		                                    <ul>
+		                                        <li>IRC Channel: #trojita on freenode</li>
+		                                        <li>Join the mailing list/read the archives
+				
+		                                            <ul>
+		                                                <li>trojita.flaska.net</li>
+		                                            </ul>
+		                                        </li>
+		                                        <li>Read Readme.md and Contribute.md</li>
+		                                        <li>Write to me at karanluthra06@gmail.com</li>
+		                                    </ul>
+		                                </li>
+		                                <li>(TODO) Follow up blogpost: blog.karanluthra.in</li>
+		                            </ul>
+		                        </div>
+		                    </div>
+		                </section>
+		            </section>
+		            <section>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 0px; top: 140px; height: auto;">
+		                    <div style="z-index: 11;" class="sl-block-content">
+		                        <h2>Stay in touch</h2>
+		                    </div>
+		                </div>
+		                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+		                    <div style="z-index: 12;" class="sl-block-content">
+		                        <ul>
+		                            <li>IRC Nick: luthrak</li>
+		                            <li>Channels: #trojita #kde-in #kde</li>
+		                            <li>Email: karanluthra06@gmail.com</li>
+		                            <li>Secure Email: mailme@karanluthra.in</li>
+		                            <li>Twitter: @karanluthra06</li>
+		                            <li>Leave comments at talk page on conf.kde.in</li>
+		                        </ul>
+		                    </div>
+		                </div>
+		                <div style="min-width: 4px; min-height: 4px; width: 112px; height: 132px; left: 640px; top: 111px;" data-block-type="shape" class="sl-block">
+		                    <div style="z-index: 13;" data-shape-stretch="false" data-shape-fill-color="#000000" data-shape-type="symbol-happy" class="sl-block-content">
+		                        <svg viewBox="0 0 32 32" preserveAspectRatio="xMidYMid" height="100%" width="100%" version="1.1"
+		                            xmlns="http://www.w3.org/2000/svg">
+		                            <g fill="#000000" class="shape-element">
+		                                <path d="M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM16 18.711c3.623 0 7.070-0.963 10-2.654-0.455 5.576-4.785 9.942-10 9.942-5.215 0-9.544-4.371-10-9.947 2.93 1.691 6.377 2.658 10 2.658zM8 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3zM20 11c0-1.657 0.895-3 2-3s2 1.343 2 3c0 1.657-0.895 3-2 3-1.105 0-2-1.343-2-3z"></path>
+		                            </g>
+		                        </svg>
+		                    </div>
+		                </div>
+		            </section>
+		        </div>
+		    </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
